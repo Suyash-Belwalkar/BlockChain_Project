@@ -17,7 +17,7 @@ function AdminComponent({ account, contractInstance }) {
 
   async function register_candidate() {
     console.log("name:", candidateName);
-    let result = await registerCandidates(
+    const result = await registerCandidates(
       contractInstance,
       account,
       candidateName,

@@ -40,13 +40,24 @@ async function connectWeb3Metamask(provider) {
 
 async function registerCandidates(contractInstance, account, _name, _age, _candidateAddress) {
     try {
-        let res2= await contractInstance.methods.resisterCandidates(
+        let res2= await contractInstance.methods.registerCandidates(
             _name,
             Number(_age),
             _candidateAddress
         ).send({from: account,gas:3000000});
-        console.log("Res:",res2)
-        return{error:false,message :res2.events.success.returnValues.msg}
+
+        if (res2.status) {
+            console.log("Transaction Receipt:", res2);
+            return { error: false, message: "Candidate registered successfully." };
+        } else {
+            console.error("Error: Transaction failed.");
+            return { error: true, message: "Transaction failed." };
+        }
+    } catch (error) {
+        console.log("Error:", error);
+        return { error: true, message: error.message };
+    }
+}
     
         // console.log("registerCandidates:", contract._address);
         // // Getting contract address
@@ -93,24 +104,29 @@ async function registerCandidates(contractInstance, account, _name, _age, _candi
         // console.log('Transaction Hash:', txReceipt);
 
         // return  { error: false, message: events[0].returnValues.msg }
-    } catch (error) {
-        console.log("Error:", error);
-        return { error: true, message: error.message }
-    }
+//     } catch (error) {
+//         console.log("Error:", error);
+//         return { error: true, message: error.message }
+//     }
 
-}
+// }
 
 async function whiteListAddress(contractInstance, account, _voterAddress) {
     try {
-        let res2=await contractInstance.methods.whiteListAddress(_voterAddress).send({from:account})
+        let res2=await contractInstance.methods.whiteListAddress(_voterAddress).send({from:account});
         console.log("Res:",res2)
-        return{error:false,message:res2.events.success.returnValues.msg}
-
+        if (res2.status) {
+            // Transaction successful
+            return { error: false, message: "Voter registered successfully." };
+        } else {
+            // Transaction failed
+            console.error("Error: Transaction failed.");
+            return { error: true, message: "Transaction failed." };
+        }
     } catch (error) {
         console.log("Error:", error);
-        return { error: true, message: error.message }
+        return { error: true, message: error.message };
     }
-
 }
 
 async function startVoting(contract, account) {
@@ -138,29 +154,32 @@ async function startVoting(contract, account) {
             data: txData,
         };
 
-        // sending txn 
+        // Sending transaction
         const txReceipt = await web3.eth.sendTransaction({
             from: from_address,
             ...txObject
         });
 
-        // Getting events to check 
-        const events = await contract.getPastEvents('allEvents', {
-            fromBlock: txReceipt.blockNumber,
-            toBlock: txReceipt.blockNumber,
-        });
+        // Wait for the transaction to be mined
+        const receipt = await web3.eth.getTransactionReceipt(txReceipt.transactionHash);
 
-        console.log('Emitted Events:', events);
-        console.log('Transaction Hash:', txReceipt);
+        // Check if 'success' event exists in the logs
+        const successEvent = receipt.logs.find(log => log.topics[0] === web3.utils.keccak256("success(string)"));
 
-        return { error: false, message: events[0].returnValues.msg }
-
+        if (successEvent) {
+            console.log('Transaction Receipt:', txReceipt);
+            return { error: false, message: "Voting started successfully." };
+        } else {
+            console.error('Error: "Success" event not emitted or has unexpected structure.');
+            return { error: true, message: 'Transaction successful, but "Success" event not emitted or has unexpected structure.' };
+        }
     } catch (error) {
         console.log("Error:", error);
-        return { error: true, message: error.message }
+        return { error: true, message: error.message };
     }
-
 }
+
+
 
 async function stopVoting(contract, account) {
     try {

@@ -22,8 +22,8 @@ contract Voting {
         bool registered;
         bool voted;
     }
-
-    event success(string msg);
+    event VotingStarted();
+    event success(string indexed msg);
     mapping(address=>uint) public candidates;
     Candidate[] public candidateList;
     mapping(address=>Voter) public voterList;
@@ -70,6 +70,7 @@ contract Voting {
     function startVoting() external {
         require(msg.sender == owner, "Only owner can start voting!!");
         votingStarted = true;
+        emit VotingStarted();
         emit success("Voting Started!!");
     }
 
