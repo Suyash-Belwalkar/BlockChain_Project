@@ -1,0 +1,93 @@
+.select{
+    margin-top: 0%;
+    font-size:280%;
+    font-family: 'Candal';
+    color: teal;
+    overflow: hidden;
+}
+.pos{
+    display: flex;
+    justify-content:center;
+    margin-left: 20%;
+    margin-top: 36%;
+    font-size: 30px;
+    padding: 55px 0px;
+    text-align: center;
+    line-height: 3px;
+    opacity: 300%;
+    background-color:rgba(3, 94, 83, 0.9);
+}
+.pos1{
+    display: flex;
+    justify-content:center;
+    margin-left: 75%;
+    margin-top: -5%;
+    font-size: 30px;
+    padding: 55px 0px;
+    text-align: center;
+    line-height: 3px;
+    opacity: 300%;
+    background-color:rgba(49,226,237,0.5);
+}
+.imgvote{
+    margin-left: 50%;
+    margin-top: -41.6%;
+    margin-bottom: 0%;
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    opacity: 85%;
+}
+.imgowner{
+    margin-right: 50%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    opacity: 85%;
+    background-size: cover;
+}
+.imgowner::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(49,226,237,0.9);
+    z-index: -1;
+}
+.imgvote::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(3, 94, 83, 0.9);
+    z-index: -1;
+} 
+.otext{
+    color: black;
+    text-shadow:  -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    2px 2px 0 black;
+    -webkit-text-stroke-width: 4;
+    -webkit-text-stroke-color: black;
+    font-family:'Bungee Shade',sans-serif;
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+}
+.vtext{
+    color: black;
+    text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    -webkit-text-stroke-width: 4;
+    -webkit-text-stroke-color: black;
+    font-family:'Bungee',sans-serif;
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+}

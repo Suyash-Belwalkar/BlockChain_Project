@@ -10,5 +10,73 @@ body {
 .banner-area{
   height: 100px;
   width: 100%;
-  background-color: #1f93cd;
+  background-color:teal;
+  color: black;
+  font-family:'Bangee',sans-serif;
+  font-size: 40px;
+  text-align: center;
+}
+
+.button1{
+  font-size: 30px;
+  padding: 20px 20px;
+  text-align: center;
+  line-height: 3px;
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 5px white,
+  0 0 25px white,0 0 50px black;
+}
+.button1:hover{
+  box-shadow: 0 0 5px white,
+  0 0 25px white,0 0 50px black,
+  0 0 100px white, 0 0 200px white;
+  background-color: white;
+  color: black;
+  border-color: black;
+  
+}
+.button2{
+  font-size: 30px;
+  padding: 28px 20px;
+  text-align: center;
+  line-height: 3px;
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 5px white,
+  0 0 25px white,0 0 50px black;
+}
+.button2:hover{
+  box-shadow: 0 0 5px white,
+  0 0 25px white,0 0 50px black,
+  0 0 100px white, 0 0 200px white;
+  background-color: white;
+  color: black;
+  border-color: black;
+  
+}
+.button3{
+  font-size: 30px;
+  padding: 28px 20px;
+  text-align: center;
+  line-height: 3px;
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 5px white,
+  0 0 25px white,0 0 50px black;
+}
+.button3:hover{
+  box-shadow: 0 0 5px teal,
+  0 0 25px  teal,0 0 50px black,
+  0 0 100px teal, 0 0 200px teal;
+  background-color: white;
+  color: black;
+  border-color: black;
+  
+}
+.bgcolor{
+  background-color: #0c1a1a;
+}
+.textc{
+  color: white;
 }

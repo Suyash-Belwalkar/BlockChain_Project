@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import personImage from '../person.png';
-import { Card, Typography, Button } from 'antd';
+import { Card, Button } from 'antd';
 import { getAllCandidate, putVote, votingStarted } from '../web3_functions';
+import '../App.css'
 
 const { Meta } = Card;
 
@@ -27,11 +28,12 @@ function VoterComponent({ account, contractInstance }) {
   }
 
   return (
-    <div style={{ paddingTop: "18px", paddingLeft: "5%", paddingRight: "5%" }}>
-      <div className='banner-area' style={{ marginBottom: 20 }}>
-        <h1>WELCOME TO ELECTION</h1>
-      </div>
-      <div>
+    <div style={{backgroundColor:'#0c1a1a'}}>
+    <div style={{ padding: "18px 5%" }}>
+    <div className="banner-area" style={{ marginBottom: 20, marginTop:10, }}>
+      <h1>WELCOME TO ELECTION</h1>
+    </div>
+      <div className='textc'> 
         {votingStatus === false ? (
           <>
             <h2>Voting not started yet !!</h2>
@@ -39,14 +41,12 @@ function VoterComponent({ account, contractInstance }) {
         ) : (
           // Array.isArray(totalCandidate) ? (
           totalCandidate.map((candidate) => (
-            <Card
+            <Card 
               key={candidate.candidateAddress}  // Added a key for each Card
-              style={{ maxWidth: 380, float: "left", marginLeft: 8, marginBottom: 8 }}
+              style={{ maxWidth: 380, float: "left", marginLeft: 8, marginBottom: 8, backgroundColor:'teal' }}
               cover={<img alt="person" src={personImage} style={{ paddingTop: 20 }} />}
-              actions={[
-                <Button type="primary" onClick={(e) => vote(candidate)}>
-                  Vote
-                </Button>,
+              actions={[                
+              <Button className="button3" style={{background:'black'}} type="primary" onClick={(e) => vote(candidate)}>Vote</Button>                 
               ]}
             >
               <Meta
@@ -57,7 +57,7 @@ function VoterComponent({ account, contractInstance }) {
           ))
         )}
       </div>
-    </div>
+    </div></div>
   );
 }
 
