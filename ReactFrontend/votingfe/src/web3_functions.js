@@ -221,7 +221,8 @@ async function stopVoting(contract, account) {
         console.log('Emitted Events:', events);
         console.log('Transaction Hash:', txReceipt);
 
-        return { error: false, message: events[0].returnValues.msg }
+        return { error: false, message:"Voting Stopped" }
+        // events[0].returnValues.msg
     } catch (error) {
         console.log("Error:", error);
         return { error: true, message: error.message }
@@ -315,7 +316,8 @@ async function putVote(contract, account, _candidateAddress) {
         console.log('Emitted Events:', events);
         console.log('Transaction Hash:', txReceipt);
 
-        return { error: false, message: events[0].returnValues.msg }
+        return { error: false, message:"Voted" }
+        //events[0].returnValues.msg
     } catch (error) {
         console.log("Error:", error);
         return { error: true, message: error.message }

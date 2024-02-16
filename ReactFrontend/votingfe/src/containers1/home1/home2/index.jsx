@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Particles ,initParticlesEngine } from "@tsparticles/react";
+import  Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim"; 
 import './styles.scss'
 import { Button } from "antd";
@@ -103,11 +103,11 @@ const Home = () => {
         <h1>
             Voting Dapp
         </h1>
-        <br></br>
+        
         <h3>
             Change is in your hand!!
         </h3>
-        <br></br><br></br><br></br><br></br><br></br>
+        <br></br><br></br><br></br>
         </div>
         <Link to="/Option"> <Button className="button" type="primary" shape="round" >Get Started</Button></Link>
              

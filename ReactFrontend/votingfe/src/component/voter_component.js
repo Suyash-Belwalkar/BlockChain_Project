@@ -25,12 +25,13 @@ function VoterComponent({ account, contractInstance }) {
   async function vote(candidate) {
     let result = await putVote(contractInstance, account, candidate.candidateAddress);
     console.log("result:", result);
+    window.alert(result.message)
   }
 
   return (
     <div style={{backgroundColor:'#0c1a1a'}}>
     <div style={{ padding: "18px 5%" }}>
-    <div className="banner-area" style={{ marginBottom: 20, marginTop:10, }}>
+    <div className="banner-area" style={{ marginBottom: 20, marginTop:10}}>
       <h1>WELCOME TO ELECTION</h1>
     </div>
       <div className='textc'> 
@@ -43,7 +44,7 @@ function VoterComponent({ account, contractInstance }) {
           totalCandidate.map((candidate) => (
             <Card 
               key={candidate.candidateAddress}  // Added a key for each Card
-              style={{ maxWidth: 380, float: "left", marginLeft: 8, marginBottom: 8, backgroundColor:'teal' }}
+              style={{ height:550, marginTop:25, maxWidth: 380, float: "left", marginLeft: 8, marginBottom: 8, backgroundColor:'teal' }}
               cover={<img alt="person" src={personImage} style={{ paddingTop: 20 }} />}
               actions={[                
               <Button className="button3" style={{background:'black'}} type="primary" onClick={(e) => vote(candidate)}>Vote</Button>                 
