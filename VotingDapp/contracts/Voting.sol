@@ -35,6 +35,9 @@ contract Voting {
         votingStarted=false;
     }
 
+
+
+
     function registerCandidates(string memory _name, uint _age, address _candidateAddress) external {
         require(msg.sender == owner, "Only owner can register Candidate!!");
         require(_candidateAddress != owner, "Owner can not participate!!");

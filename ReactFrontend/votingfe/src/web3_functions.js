@@ -1,6 +1,6 @@
 import { Web3 } from "web3";
 import VotingContract from './Voting.json';
-
+// import Voting from "../../../VotingDapp/build/contracts/Voting.json";
 const web3 = new Web3(window.ethereum);
 // NOTE: 
 // if http://localhost:8545 not working then try this http://127.0.0.1:8545/ 
