@@ -11,9 +11,11 @@ module.exports = {
       port: 8545
     }
   },
-  compilers:{
-    solc:{
-      version:"^0.8.13"
+  compilers: {
+    solc: {
+      version: "0.8.13",
+      // settings: { } // You can optionally add settings here
     }
   }
+  
 };
