@@ -113,6 +113,7 @@ contract Voting {
 
     function getWinner() public view returns(Candidate memory candidate){
         // require(msg.sender == owner, "Only owner can declare winner!!");
+        require(votingStarted==false ,"Voting has not stopped yet!!");
         return candidateList[candidates[winnerAddress]];
     }
 }
